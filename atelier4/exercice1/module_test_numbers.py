@@ -1,17 +1,12 @@
-# Vérifie si la chaîne représente un nombre (entier ou flottant)
 def is_number(valeur):
-    if valeur.replace('.', '', 1).isdigit() or valeur.replace('-', '', 1).isdigit() or valeur.replace('+', '', 1).isdigit():
+    try:
+        float(valeur)
         return True
-    return False
+    except ValueError:
+        return False
 
-# Vérifie si la chaîne représente un float (entier ou flottant)
 def is_float(valeur):
-    if valeur.replace('.', '', 1).isdigit() or valeur.replace('-', '', 1).isdigit() or valeur.replace('+', '', 1).isdigit():
-        return True
-    return False
+    return is_number(valeur) and '.' in valeur
 
-# Vérifie si la chaîne représente un entier naturel
 def is_positive_number(valeur):
-    if valeur.replace('.', '', 1).isdigit() or valeur.replace('+', '', 1).isdigit():
-        return True
-    return False
+    return is_number(valeur) and float(valeur) > 0
